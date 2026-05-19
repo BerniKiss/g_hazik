@@ -17,14 +17,14 @@ namespace Szeminarium1_24_02_17_2
         // 27 kicsi kocka
         private static GlCube[,,] rubikCubies = new GlCube[3, 3, 3];
 
-        // Ga hezag 
         private const float CubieSize = 1.0f;
-        private const float Gap = 0.05f;  // a hezagm aga
+        private const float Gap = 0.05f;
         private const float Step = CubieSize + Gap;
 
         private const string ModelMatrixVariableName = "uModel";
         private const string ViewMatrixVariableName = "uView";
         private const string ProjectionMatrixVariableName = "uProjection";
+        private const string SliceRotationMatrixVariableName = "uSliceRotation";
 
         private static readonly string VertexShaderSource = @"
         #version 330 core
@@ -34,13 +34,14 @@ namespace Szeminarium1_24_02_17_2
         uniform mat4 uModel;
         uniform mat4 uView;
         uniform mat4 uProjection;
+        uniform mat4 uSliceRotation;
 
         out vec4 outCol;
 
         void main()
         {
             outCol = vCol;
-            gl_Position = uProjection * uView * uModel * vec4(vPos, 1.0);
+            gl_Position = uProjection * uView * uSliceRotation * uModel * vec4(vPos, 1.0);
         }
         ";
 
@@ -55,27 +56,24 @@ namespace Szeminarium1_24_02_17_2
         }
         ";
 
-       // a szinek
+        // a szinek
         private static readonly float[] ColTop = [1.00f, 0.08f, 0.58f, 1.0f]; // sotetebb lila    
         private static readonly float[] ColBottom = [0.56f, 0.00f, 1.00f, 1.0f]; // sotetebb violet
         private static readonly float[] ColFront = [0.93f, 0.51f, 0.93f, 1.0f]; // violet     
         private static readonly float[] ColBack = [0.29f, 0.00f, 0.51f, 1.0f]; // sotet lila (-Z)
         private static readonly float[] ColLeft = [1.00f, 0.41f, 0.71f, 1.0f]; // rozsaszin
         private static readonly float[] ColRight = [0.80f, 0.00f, 0.80f, 1.0f]; // magenta  
-        // Interior / hidden faces
+        // belso / rejtett lapok
         private static readonly float[] ColInner = [0.15f, 0.15f, 0.15f, 1.0f]; // sotet szurke
 
-    
         static void Main(string[] args)
         {
-
             var windowOptions = WindowOptions.Default;
             windowOptions.Title = "2 szeminárium";
             windowOptions.Size = new Vector2D<int>(600, 600);
 
             // on some systems there is no depth buffer by default, so we need to make sure one is created
             windowOptions.PreferredDepthBufferBits = 24;
-
 
             window = Window.Create(windowOptions);
 
@@ -86,11 +84,8 @@ namespace Szeminarium1_24_02_17_2
             window.Run();
         }
 
-   
         private static void Window_Load()
         {
-            //Console.WriteLine("Load");
-
             // set up input handling
             IInputContext inputContext = window.CreateInput();
             foreach (var keyboard in inputContext.Keyboards)
@@ -111,7 +106,6 @@ namespace Szeminarium1_24_02_17_2
             Gl.DepthFunc(DepthFunction.Lequal);
         }
 
-        
         // mind a 27 kis kocka es hozza szinek
         private static void SetUpObjects()
         {
@@ -119,7 +113,7 @@ namespace Szeminarium1_24_02_17_2
                 for (int yi = 0; yi < 3; yi++)
                     for (int zi = 0; zi < 3; zi++)
                     {
-                        // sorrend : top(+Y) front(+Z) left(-X) bottom(-Y) back(-Z) right(+X)
+                        // sorrend: top(+Y) front(+Z) left(-X) bottom(-Y) back(-Z) right(+X)
                         float[] fTop = (yi == 2) ? ColTop : ColInner;
                         float[] fFront = (zi == 2) ? ColFront : ColInner;
                         float[] fLeft = (xi == 0) ? ColLeft : ColInner;
@@ -132,7 +126,6 @@ namespace Szeminarium1_24_02_17_2
                     }
         }
 
-     
         private static void LinkProgram()
         {
             uint vshader = Gl.CreateShader(ShaderType.VertexShader);
@@ -166,27 +159,49 @@ namespace Szeminarium1_24_02_17_2
         {
             switch (key)
             {
-                case Key.Left:
-                    cameraDescriptor.DecreaseZYAngle();
-                    break;
-                    ;
-                case Key.Right:
-                    cameraDescriptor.IncreaseZYAngle();
+                // kamera mozgas - nyilak
+                case Key.Up:
+                    cameraDescriptor.MoveForward();
                     break;
                 case Key.Down:
-                    cameraDescriptor.IncreaseDistance();
+                    cameraDescriptor.MoveBackward();
                     break;
-                case Key.Up:
-                    cameraDescriptor.DecreaseDistance();
+                case Key.Left:
+                    cameraDescriptor.StrafeLeft();
                     break;
-                case Key.U:
-                    cameraDescriptor.IncreaseZXAngle();
+                case Key.Right:
+                    cameraDescriptor.StrafeRight();
+                    break;
+
+                // kamera fordulas - WASD
+                case Key.A:
+                    cameraDescriptor.TurnLeft();
                     break;
                 case Key.D:
-                    cameraDescriptor.DecreaseZXAngle();
+                    cameraDescriptor.TurnRight();
                     break;
+                case Key.W:
+                    cameraDescriptor.TiltUp();
+                    break;
+                case Key.S:
+                    cameraDescriptor.TiltDown();
+                    break;
+
+                // fel-le mozgas - Q es E
+                case Key.Q:
+                    cameraDescriptor.MoveUp();
+                    break;
+                case Key.E:
+                    cameraDescriptor.MoveDown();
+                    break;
+
+                // lap forgatas - Space es Backspace
                 case Key.Space:
-                    cubeArrangementModel.AnimationEnabeld = !cubeArrangementModel.AnimationEnabeld;
+                    cubeArrangementModel.StartRotationPositive();
+                    Console.WriteLine("SPACE: " + cubeArrangementModel.TopSliceAngle);
+                    break;
+                case Key.Backspace:
+                    cubeArrangementModel.StartRotationNegative();
                     break;
             }
         }
@@ -209,12 +224,9 @@ namespace Szeminarium1_24_02_17_2
 
         private static unsafe void DrawRubikCube()
         {
-            float rotY = (float)cubeArrangementModel.DiamondCubeAngleRevolutionOnGlobalY;
-            var globalRot = Matrix4X4.CreateRotationY(rotY) *
-                            Matrix4X4.CreateRotationX(0.45f);   // 25 fokos
-
-            
-            float offset = Step; // tavolsag belostol kulsoig
+            // a felso lap forgatasat egyszerre szamoljuk ki
+            Matrix4X4<float> topSliceRot = cubeArrangementModel.TopSliceRotationMatrix;
+            Matrix4X4<float> identity = Matrix4X4<float>.Identity;
 
             for (int xi = 0; xi < 3; xi++)
                 for (int yi = 0; yi < 3; yi++)
@@ -224,10 +236,16 @@ namespace Szeminarium1_24_02_17_2
                         float ty = (yi - 1) * Step;
                         float tz = (zi - 1) * Step;
 
-                        var translation = Matrix4X4.CreateTranslation(tx, ty, tz);
-                        var model = translation * globalRot;
+                        // saját model mátrix: a kocka helyere tolja
+                        var model = Matrix4X4.CreateTranslation(tx, ty, tz);
 
                         SetModelMatrix(model);
+
+                        // ha a felso lapon van, a lap forgatasat kapja, kulonben egysegmatrixot
+                        if (cubeArrangementModel.IsOnTopSlice(xi, yi, zi))
+                            SetSliceRotationMatrix(topSliceRot);
+                        else
+                            SetSliceRotationMatrix(identity);
 
                         var cubie = rubikCubies[xi, yi, zi];
                         Gl.BindVertexArray(cubie.Vao);
@@ -242,6 +260,18 @@ namespace Szeminarium1_24_02_17_2
             if (loc == -1)
             {
                 throw new Exception($"{ModelMatrixVariableName} uniform not found.");
+            }
+
+            Gl.UniformMatrix4(loc, 1, false, (float*)&m);
+            CheckError();
+        }
+
+        private static unsafe void SetSliceRotationMatrix(Matrix4X4<float> m)
+        {
+            int loc = Gl.GetUniformLocation(program, SliceRotationMatrixVariableName);
+            if (loc == -1)
+            {
+                throw new Exception($"{SliceRotationMatrixVariableName} uniform not found.");
             }
 
             Gl.UniformMatrix4(loc, 1, false, (float*)&m);

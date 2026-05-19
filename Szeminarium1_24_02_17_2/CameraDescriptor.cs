@@ -4,88 +4,103 @@ namespace Szeminarium1_24_02_17_2
 {
     internal class CameraDescriptor
     {
-        private double DistanceToOrigin = 1;
+        // kamera pozi
+        private Vector3D<float> _position = new Vector3D<float>(0f, 0f, 8f);
 
-        private double AngleToZYPlane = 0;
+        // forward, right, up vektorok
+        private Vector3D<float> _forward = new Vector3D<float>(0f, 0f, -1f);
+        private Vector3D<float> _right = new Vector3D<float>(1f, 0f, 0f);
+        private Vector3D<float> _up = new Vector3D<float>(0f, 1f, 0f);
 
-        private double AngleToZXPlane = 0;
+        private const float MoveStep = 0.3f;
+        private const float TurnStep = (float)(Math.PI / 180 * 5);
 
-        private const double DistanceScaleFactor = 1.1;
+        // pozicio
+        public Vector3D<float> Position => _position;
 
-        private const double AngleChangeStepSize = Math.PI / 180 * 5;
+        // a kamera elott levo pont
+        public Vector3D<float> Target => _position + _forward;
 
-        /// <summary>
-        /// Gets the position of the camera.
-        /// </summary>
-        public Vector3D<float> Position
+        // fel vektor
+        public Vector3D<float> UpVector => _up;
+
+        // elore mozgas (ny fel)
+        public void MoveForward()
         {
-            get
-            {
-                return GetPointFromAngles(DistanceToOrigin, AngleToZYPlane, AngleToZXPlane);
-            }
+            _position += _forward * MoveStep;
         }
 
-        /// <summary>
-        /// Gets the up vector of the camera.
-        /// </summary>
-        public Vector3D<float> UpVector
+        // hatra mozgas (le)
+        public void MoveBackward()
         {
-            get
-            {
-                return Vector3D.Normalize(GetPointFromAngles(DistanceToOrigin, AngleToZYPlane, AngleToZXPlane + Math.PI / 2));
-            }
+            _position -= _forward * MoveStep;
         }
 
-        /// <summary>
-        /// Gets the target point of the camera view.
-        /// </summary>
-        public Vector3D<float> Target
+        // balra (ny bal)
+        public void StrafeLeft()
         {
-            get
-            {
-                // For the moment the camera is always pointed at the origin.
-                return Vector3D<float>.Zero;
-            }
+            _position -= _right * MoveStep;
         }
 
-        public void IncreaseZXAngle()
+        // jobbra  (ny jobb)
+        public void StrafeRight()
         {
-            AngleToZXPlane += AngleChangeStepSize;
+            _position += _right * MoveStep;
         }
 
-        public void DecreaseZXAngle()
+        // felfele mozgas (Q)
+        public void MoveUp()
         {
-            AngleToZXPlane -= AngleChangeStepSize;
+            _position += _up * MoveStep;
         }
 
-        public void IncreaseZYAngle()
+        // lefele mozgas (E)
+        public void MoveDown()
         {
-            AngleToZYPlane += AngleChangeStepSize;
-
+            _position -= _up * MoveStep;
         }
 
-        public void DecreaseZYAngle()
+        // balra fordulas Y tengely korul (A)
+        public void TurnLeft()
         {
-            AngleToZYPlane -= AngleChangeStepSize;
+            RotateAroundAxis(new Vector3D<float>(0f, 1f, 0f), TurnStep);
         }
 
-        public void IncreaseDistance()
+        // jobbra fordulas Y tengely korul (D)
+        public void TurnRight()
         {
-            DistanceToOrigin = DistanceToOrigin * DistanceScaleFactor;
+            RotateAroundAxis(new Vector3D<float>(0f, 1f, 0f), -TurnStep);
         }
 
-        public void DecreaseDistance()
+        // felfelé bil sajat jobb tengely (W)
+        public void TiltUp()
         {
-            DistanceToOrigin = DistanceToOrigin / DistanceScaleFactor;
+            RotateAroundAxis(_right, TurnStep);
         }
 
-        private static Vector3D<float> GetPointFromAngles(double distanceToOrigin, double angleToMinZYPlane, double angleToMinZXPlane)
+        // lefele billes sajat right tengely (S) 
+        public void TiltDown()
         {
-            var x = distanceToOrigin * Math.Cos(angleToMinZXPlane) * Math.Sin(angleToMinZYPlane);
-            var z = distanceToOrigin * Math.Cos(angleToMinZXPlane) * Math.Cos(angleToMinZYPlane);
-            var y = distanceToOrigin * Math.Sin(angleToMinZXPlane);
+            RotateAroundAxis(_right, -TurnStep);
+        }
 
-            return new Vector3D<float>((float)x, (float)y, (float)z);
+        // tetszoleges tengely
+        private void RotateAroundAxis(Vector3D<float> axis, float angle)
+        {
+            float cos = (float)Math.Cos(angle);
+            float sin = (float)Math.Sin(angle);
+
+            _forward = Vector3D.Normalize(
+                _forward * cos +
+                Vector3D.Cross(axis, _forward) * sin +
+                axis * Vector3D.Dot(axis, _forward) * (1 - cos));
+
+            _right = Vector3D.Normalize(
+                _right * cos +
+                Vector3D.Cross(axis, _right) * sin +
+                axis * Vector3D.Dot(axis, _right) * (1 - cos));
+
+            _up = Vector3D.Normalize(Vector3D.Cross(_right, _forward) * -1f);
         }
     }
 }
