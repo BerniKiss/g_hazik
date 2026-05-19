@@ -10,21 +10,27 @@ using System.Threading.Tasks;
 namespace Szeminarium1_24_02_17_2
 {
     internal class GlCube
+
+
     {
+        private static uint sharedVertices = 0;
+        private static uint sharedIndices = 0;
+        private static bool sharedInitialised = false;
+
         public uint Vao { get; }
-        public uint Vertices { get; }
+        // public uint Vertices { get; }
         public uint Colors { get; }
-        public uint Indices { get; }
+        // public uint Indices { get; }
         public uint IndexArrayLength { get; }
 
         private GL Gl;
 
-        private GlCube(uint vao, uint vertices, uint colors, uint indeces, uint indexArrayLength, GL gl)
+        private GlCube(uint vao, uint colors, uint indexArrayLength, GL gl)
         {
             this.Vao = vao;
-            this.Vertices = vertices;
+            // this.Vertices = vertices;
             this.Colors = colors;
-            this.Indices = indeces;
+            // this.Indices = indeces;
             this.IndexArrayLength = indexArrayLength;
             this.Gl = gl;
         }
@@ -122,36 +128,60 @@ namespace Szeminarium1_24_02_17_2
                 20, 23, 22
             };
 
-            uint vertices = Gl.GenBuffer();
-            Gl.BindBuffer(GLEnum.ArrayBuffer, vertices);
-            Gl.BufferData(GLEnum.ArrayBuffer, (ReadOnlySpan<float>)vertexArray.AsSpan(), GLEnum.StaticDraw);
+            if (!sharedInitialised)
+            {
+                sharedVertices = Gl.GenBuffer();
+                Gl.BindBuffer(GLEnum.ArrayBuffer, sharedVertices);
+                Gl.BufferData(GLEnum.ArrayBuffer, (ReadOnlySpan<float>)vertexArray.AsSpan(), GLEnum.StaticDraw);
+
+                sharedIndices = Gl.GenBuffer();
+                Gl.BindBuffer(GLEnum.ElementArrayBuffer, sharedIndices);
+                Gl.BufferData(GLEnum.ElementArrayBuffer, (ReadOnlySpan<uint>)indexArray.AsSpan(), GLEnum.StaticDraw);
+
+                sharedInitialised = true;
+
+            }
+
+
+            // vertex poz
+            Gl.BindBuffer(GLEnum.ArrayBuffer, sharedVertices);
             Gl.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 0, null);
             Gl.EnableVertexAttribArray(0);
 
+            // szinek
             uint colors = Gl.GenBuffer();
             Gl.BindBuffer(GLEnum.ArrayBuffer, colors);
             Gl.BufferData(GLEnum.ArrayBuffer, (ReadOnlySpan<float>)colorArray.AsSpan(), GLEnum.StaticDraw);
             Gl.VertexAttribPointer(1, 4, VertexAttribPointerType.Float, false, 0, null);
             Gl.EnableVertexAttribArray(1);
 
-            uint indices = Gl.GenBuffer();
-            Gl.BindBuffer(GLEnum.ElementArrayBuffer, indices);
-            Gl.BufferData(GLEnum.ElementArrayBuffer, (ReadOnlySpan<uint>)indexArray.AsSpan(), GLEnum.StaticDraw);
+            // EBO-t a VAO-ban kell
+            Gl.BindBuffer(GLEnum.ElementArrayBuffer, sharedIndices);
 
-            // release array buffer
             Gl.BindBuffer(GLEnum.ArrayBuffer, 0);
+            Gl.BindVertexArray(0);
+
             uint indexArrayLength = (uint)indexArray.Length;
 
-            return new GlCube(vao, vertices, colors, indices, indexArrayLength, Gl);
+            return new GlCube(vao, colors, indexArrayLength, Gl);
         }
 
         internal void ReleaseGlCube()
         {
             // always unbound the vertex buffer first, so no halfway results are displayed by accident
-            Gl.DeleteBuffer(Vertices);
+            // Gl.DeleteBuffer(Vertices);
             Gl.DeleteBuffer(Colors);
-            Gl.DeleteBuffer(Indices);
+            // Gl.DeleteBuffer(Indices);
             Gl.DeleteVertexArray(Vao);
+        }
+
+        // shared bufferek torlese
+        internal static void ReleaseSharedGeometry(GL Gl)
+        {
+            if (!sharedInitialised) return;
+            Gl.DeleteBuffer(sharedVertices);
+            Gl.DeleteBuffer(sharedIndices);
+            sharedInitialised = false;
         }
     }
 }

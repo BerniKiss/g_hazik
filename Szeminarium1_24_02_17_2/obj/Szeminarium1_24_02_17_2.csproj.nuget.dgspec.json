@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Koli\\Munka\\BBTE\\Tantargyak\\Grafika (MLM5060)\\Kodok\\Grafika-MLM5060\\Szemi2\\Elok\\2024_03_12_2\\Szeminarium1_24_02_17_2\\Szeminarium1_24_02_17_2.csproj": {}
+    "C:\\Users\\Berni\\Source\\Repos\\g_hazik\\Szeminarium1_24_02_17_2\\Szeminarium1_24_02_17_2.csproj": {}
   },
   "projects": {
-    "D:\\Koli\\Munka\\BBTE\\Tantargyak\\Grafika (MLM5060)\\Kodok\\Grafika-MLM5060\\Szemi2\\Elok\\2024_03_12_2\\Szeminarium1_24_02_17_2\\Szeminarium1_24_02_17_2.csproj": {
+    "C:\\Users\\Berni\\Source\\Repos\\g_hazik\\Szeminarium1_24_02_17_2\\Szeminarium1_24_02_17_2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Koli\\Munka\\BBTE\\Tantargyak\\Grafika (MLM5060)\\Kodok\\Grafika-MLM5060\\Szemi2\\Elok\\2024_03_12_2\\Szeminarium1_24_02_17_2\\Szeminarium1_24_02_17_2.csproj",
+        "projectUniqueName": "C:\\Users\\Berni\\Source\\Repos\\g_hazik\\Szeminarium1_24_02_17_2\\Szeminarium1_24_02_17_2.csproj",
         "projectName": "Szeminarium1_24_02_17_2",
-        "projectPath": "D:\\Koli\\Munka\\BBTE\\Tantargyak\\Grafika (MLM5060)\\Kodok\\Grafika-MLM5060\\Szemi2\\Elok\\2024_03_12_2\\Szeminarium1_24_02_17_2\\Szeminarium1_24_02_17_2.csproj",
-        "packagesPath": "C:\\Users\\kolum\\.nuget\\packages\\",
-        "outputPath": "D:\\Koli\\Munka\\BBTE\\Tantargyak\\Grafika (MLM5060)\\Kodok\\Grafika-MLM5060\\Szemi2\\Elok\\2024_03_12_2\\Szeminarium1_24_02_17_2\\obj\\",
+        "projectPath": "C:\\Users\\Berni\\Source\\Repos\\g_hazik\\Szeminarium1_24_02_17_2\\Szeminarium1_24_02_17_2.csproj",
+        "packagesPath": "C:\\Users\\Berni\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Berni\\Source\\Repos\\g_hazik\\Szeminarium1_24_02_17_2\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\kolum\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Berni\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,15 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
-          "C:\\Users\\kolum\\.nuget\\repository": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://nexus.kilgray.com/repository/kilgray-nuget-dev-sandbox/": {},
-          "https://nexus.kilgray.com/repository/kilgray-private-nuget-release/": {},
-          "https://nexus.kilgray.com/repository/kilgray-private-nuget-snapshot/": {},
-          "https://nexus.kilgray.com/repository/memoq-nuget-debug/": {},
-          "https://nexus.kilgray.com/repository/memoq-nuget-release/": {},
-          "https://nexus.kilgray.com/repository/memoq-nuget-sandbox/": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
@@ -46,6 +34,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -73,7 +66,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
