@@ -3,7 +3,6 @@ using Silk.NET.Maths;
 using Silk.NET.OpenGL;
 using Silk.NET.OpenGL.Extensions.ImGui;
 using Silk.NET.Windowing;
-using System.Dynamic;
 using System.Numerics;
 using System.Reflection;
 using Szeminarium;
@@ -13,12 +12,12 @@ namespace GrafikaSzeminarium
     internal class Program
     {
         private static IWindow graphicWindow;
-
+        // itt egy komment
         private static GL Gl;
 
         private static ImGuiController imGuiController;
 
-        private static ModelObjectDescriptor cube;
+        private static ModelObjectDescriptor side, side2;
 
         private static CameraDescriptor camera = new CameraDescriptor();
 
@@ -57,7 +56,8 @@ namespace GrafikaSzeminarium
 
         private static void GraphicWindow_Closing()
         {
-            cube.Dispose();
+            side.Dispose();
+            side2.Dispose();
             Gl.DeleteProgram(program);
         }
 
@@ -82,10 +82,11 @@ namespace GrafikaSzeminarium
 
             imGuiController = new ImGuiController(Gl, graphicWindow, inputContext);
 
-            cube = ModelObjectDescriptor.CreateCube(Gl);
+            side = ModelObjectDescriptor.CreateSides1(Gl);
+            side2 = ModelObjectDescriptor.CreateSides2(Gl);
 
             Gl.ClearColor(System.Drawing.Color.White);
-            
+
             Gl.Enable(EnableCap.CullFace);
             Gl.CullFace(TriangleFace.Back);
 
@@ -100,13 +101,13 @@ namespace GrafikaSzeminarium
             Gl.CompileShader(vshader);
             Gl.GetShader(vshader, ShaderParameterName.CompileStatus, out int vStatus);
             if (vStatus != (int)GLEnum.True)
-                throw new Exception("Vertex shader failed to compile: " + Gl.GetShaderInfoLog(vshader));
+                throw new System.Exception("Vertex shader failed to compile: " + Gl.GetShaderInfoLog(vshader));
 
             Gl.ShaderSource(fshader, GetEmbeddedResourceAsString("Shaders.FragmentShader.frag"));
             Gl.CompileShader(fshader);
             Gl.GetShader(fshader, ShaderParameterName.CompileStatus, out int fStatus);
             if (fStatus != (int)GLEnum.True)
-                throw new Exception("Fragment shader failed to compile: " + Gl.GetShaderInfoLog(fshader));
+                throw new System.Exception("Fragment shader failed to compile: " + Gl.GetShaderInfoLog(fshader));
 
             program = Gl.CreateProgram();
             Gl.AttachShader(program, vshader);
@@ -125,7 +126,7 @@ namespace GrafikaSzeminarium
             Gl.GetProgram(program, GLEnum.LinkStatus, out var status);
             if (status == 0)
             {
-                Console.WriteLine($"Error linking shader {Gl.GetProgramInfoLog(program)}");
+                System.Console.WriteLine($"Error linking shader {Gl.GetProgramInfoLog(program)}");
             }
         }
 
@@ -134,7 +135,7 @@ namespace GrafikaSzeminarium
             string resourceFullPath = Assembly.GetExecutingAssembly().GetName().Name + "." + resourceRelativePath;
 
             using (var resStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceFullPath))
-            using (var resStreamReader = new StreamReader(resStream))
+            using (var resStreamReader = new System.IO.StreamReader(resStream))
             {
                 var text = resStreamReader.ReadToEnd();
                 return text;
@@ -186,35 +187,35 @@ namespace GrafikaSzeminarium
             Gl.UseProgram(program);
 
             SetUniform3(LightColorVariableName, new Vector3(1f, 1f, 1f));
-            SetUniform3(LightPositionVariableName, new Vector3(0f, 1.2f, 0f));
+            SetUniform3(LightPositionVariableName, new Vector3(camera.Position.X, camera.Position.Y, camera.Position.Z));
             SetUniform3(ViewPositionVariableName, new Vector3(camera.Position.X, camera.Position.Y, camera.Position.Z));
             SetUniform1(ShinenessVariableName, shininess);
 
             var viewMatrix = Matrix4X4.CreateLookAt(camera.Position, camera.Target, camera.UpVector);
             SetMatrix(viewMatrix, ViewMatrixVariableName);
 
-            var projectionMatrix = Matrix4X4.CreatePerspectiveFieldOfView<float>((float)(Math.PI / 2), 1024f / 768f, 0.1f, 100f);
+            var projectionMatrix = Matrix4X4.CreatePerspectiveFieldOfView<float>((float)(System.Math.PI / 2), 1024f / 768f, 0.1f, 100f);
             SetMatrix(projectionMatrix, ProjectionMatrixVariableName);
 
 
-            var modelMatrixCenterCube = Matrix4X4.CreateScale((float)cubeArrangementModel.CenterCubeScale);
-            SetModelMatrix(modelMatrixCenterCube);
-            DrawModelObject(cube);
+            // felso dezsa
+            for (int i = 0; i < 18; i++)
+            {
+                float angle = i * 20f * (float)(Math.PI / 180f);
+                var rotation = Matrix4X4.CreateRotationY(angle);
+                SetModelMatrix(rotation);
+                DrawModelObject(side);
+            }
 
-            Matrix4X4<float> diamondScale = Matrix4X4.CreateScale(0.25f);
-            Matrix4X4<float> rotx = Matrix4X4.CreateRotationX((float)Math.PI / 4f);
-            Matrix4X4<float> rotz = Matrix4X4.CreateRotationZ((float)Math.PI / 4f);
-            Matrix4X4<float> roty = Matrix4X4.CreateRotationY((float)cubeArrangementModel.DiamondCubeLocalAngle);
-            Matrix4X4<float> trans = Matrix4X4.CreateTranslation(1f, 1f, 0f);
-            Matrix4X4<float> rotGlobalY = Matrix4X4.CreateRotationY((float)cubeArrangementModel.DiamondCubeGlobalYAngle);
-            Matrix4X4<float> dimondCubeModelMatrix = diamondScale * rotx * rotz * roty * trans * rotGlobalY;
-            SetModelMatrix(dimondCubeModelMatrix);
-            DrawModelObject(cube);
-
-            //ImGuiNET.ImGui.ShowDemoWindow();
-            ImGuiNET.ImGui.Begin("Lighting", ImGuiNET.ImGuiWindowFlags.AlwaysAutoResize | ImGuiNET.ImGuiWindowFlags.NoCollapse);
-            ImGuiNET.ImGui.SliderFloat("Shininess", ref shininess, 5, 100);
-            ImGuiNET.ImGui.End();
+            // also dezsa
+            var trans = Matrix4X4.CreateTranslation(0f, -2f, 0f);
+            for (int i = 0; i < 18; i++)
+            {
+                float angle = i * 20f * (float)(Math.PI / 180f);
+                var rotation = Matrix4X4.CreateRotationY(angle);
+                SetModelMatrix(rotation * trans);
+                DrawModelObject(side2);
+            }
 
             imGuiController.Render();
         }
@@ -227,7 +228,7 @@ namespace GrafikaSzeminarium
             int location = Gl.GetUniformLocation(program, NormalMatrixVariableName);
             if (location == -1)
             {
-                throw new Exception($"{NormalMatrixVariableName} uniform not found on shader.");
+                throw new System.Exception($"{NormalMatrixVariableName} uniform not found on shader.");
             }
 
             // G = (M^-1)^T
@@ -250,7 +251,7 @@ namespace GrafikaSzeminarium
             int location = Gl.GetUniformLocation(program, uniformName);
             if (location == -1)
             {
-                throw new Exception($"{uniformName} uniform not found on shader.");
+                throw new System.Exception($"{uniformName} uniform not found on shader.");
             }
 
             Gl.Uniform1(location, uniformValue);
@@ -262,7 +263,7 @@ namespace GrafikaSzeminarium
             int location = Gl.GetUniformLocation(program, uniformName);
             if (location == -1)
             {
-                throw new Exception($"{uniformName} uniform not found on shader.");
+                throw new System.Exception($"{uniformName} uniform not found on shader.");
             }
 
             Gl.Uniform3(location, uniformValue);
@@ -283,7 +284,7 @@ namespace GrafikaSzeminarium
             int location = Gl.GetUniformLocation(program, uniformName);
             if (location == -1)
             {
-                throw new Exception($"{uniformName} uniform not found on shader.");
+                throw new System.Exception($"{uniformName} uniform not found on shader.");
             }
 
             Gl.UniformMatrix4(location, 1, false, (float*)&mx);
@@ -294,7 +295,7 @@ namespace GrafikaSzeminarium
         {
             var error = (ErrorCode)Gl.GetError();
             if (error != ErrorCode.NoError)
-                throw new Exception("GL.GetError() returned " + error.ToString());
+                throw new System.Exception("GL.GetError() returned " + error.ToString());
         }
     }
 }

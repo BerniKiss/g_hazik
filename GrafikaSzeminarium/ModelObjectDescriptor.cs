@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace GrafikaSzeminarium
 {
-    internal class ModelObjectDescriptor:IDisposable
+    internal class ModelObjectDescriptor : IDisposable
     {
         private bool disposedValue;
 
@@ -21,48 +21,23 @@ namespace GrafikaSzeminarium
 
         private GL Gl;
 
-        public unsafe static ModelObjectDescriptor CreateCube(GL Gl)
+        public unsafe static ModelObjectDescriptor CreateSides1(GL Gl)
         {
             uint vao = Gl.GenVertexArray();
             Gl.BindVertexArray(vao);
 
             // counter clockwise is front facing
             float[] vertexArray = new float[] {
-                // top face
-                -0.5f, 0.5f, 0.5f, 0f, 1f, 0f,
-                0.5f, 0.5f, 0.5f, 0f, 1f, 0f,
-                0.5f, 0.5f, -0.5f, 0f, 1f, 0f,
-                -0.5f, 0.5f, -0.5f, 0f, 1f, 0f, 
 
                 // front face
-                -0.5f, 0.5f, 0.5f, 0f, 0f, 1f,
-                -0.5f, -0.5f, 0.5f, 0f, 0f, 1f,
-                0.5f, -0.5f, 0.5f, 0f, 0f, 1f,
-                0.5f, 0.5f, 0.5f, 0f, 0f, 1f,
-
-                // left face
-                -0.5f, 0.5f, 0.5f, -1f, 0f, 0f,
-                -0.5f, 0.5f, -0.5f, -1f, 0f, 0f,
-                -0.5f, -0.5f, -0.5f, -1f, 0f, 0f,
-                -0.5f, -0.5f, 0.5f, -1f, 0f, 0f,
-
-                // bottom face
-                -0.5f, -0.5f, 0.5f, 0f, -1f, 0f,
-                0.5f, -0.5f, 0.5f,0f, -1f, 0f,
-                0.5f, -0.5f, -0.5f,0f, -1f, 0f,
-                -0.5f, -0.5f, -0.5f,0f, -1f, 0f,
-
-                // back face
-                0.5f, 0.5f, -0.5f, 0f, 0f, -1f,
-                -0.5f, 0.5f, -0.5f,0f, 0f, -1f,
-                -0.5f, -0.5f, -0.5f,0f, 0f, -1f,
-                0.5f, -0.5f, -0.5f,0f, 0f, -1f,
-
-                // right face
-                0.5f, 0.5f, 0.5f, 1f, 0f, 0f,
-                0.5f, 0.5f, -0.5f,1f, 0f, 0f,
-                0.5f, -0.5f, -0.5f,1f, 0f, 0f,
-                0.5f, -0.5f, 0.5f,1f, 0f, 0f,
+                //-0.5f, 0.75f, 0.5f * ((float)Math.Sin(80.0 * Math.PI / 180.0)) / ((float)Math.Sin(10.0 * Math.PI / 180.0)), 0f, 0f, 1f,
+                //-0.5f, -0.75f, 0.5f * ((float)Math.Sin(80.0 * Math.PI / 180.0)) / ((float)Math.Sin(10.0 * Math.PI / 180.0)), 0f, 0f, 1f,
+                //0.5f, -0.75f, 0.5f * ((float)Math.Sin(80.0 * Math.PI / 180.0)) / ((float)Math.Sin(10.0 * Math.PI / 180.0)), 0f, 0f, 1f,
+                //0.5f, 0.75f, 0.5f * ((float)Math.Sin(80.0 * Math.PI / 180.0)) / ((float)Math.Sin(10.0 * Math.PI / 180.0)), 0f, 0f, 1f,
+                 -0.5f, 0.75f, 0.5f / ((float)Math.Tan(10.0 * Math.PI / 180.0)), 0f, 0f, 1f,
+                -0.5f, -0.75f, 0.5f / ((float)Math.Tan(10.0 * Math.PI / 180.0)), 0f, 0f, 1f,
+                0.5f, -0.75f, 0.5f / ((float)Math.Tan(10.0 * Math.PI / 180.0)), 0f, 0f, 1f,
+                0.5f, 0.75f, 0.5f / ((float)Math.Tan(10.0 * Math.PI / 180.0)), 0f, 0f, 1f,
             };
 
             float[] colorArray = new float[] {
@@ -71,50 +46,12 @@ namespace GrafikaSzeminarium
                 1.0f, 0.0f, 0.0f, 1.0f,
                 1.0f, 0.0f, 0.0f, 1.0f,
 
-                0.0f, 1.0f, 0.0f, 1.0f,
-                0.0f, 1.0f, 0.0f, 1.0f,
-                0.0f, 1.0f, 0.0f, 1.0f,
-                0.0f, 1.0f, 0.0f, 1.0f,
-
-                0.0f, 0.0f, 1.0f, 1.0f,
-                0.0f, 0.0f, 1.0f, 1.0f,
-                0.0f, 0.0f, 1.0f, 1.0f,
-                0.0f, 0.0f, 1.0f, 1.0f,
-
-                1.0f, 0.0f, 1.0f, 1.0f,
-                1.0f, 0.0f, 1.0f, 1.0f,
-                1.0f, 0.0f, 1.0f, 1.0f,
-                1.0f, 0.0f, 1.0f, 1.0f,
-
-                0.0f, 1.0f, 1.0f, 1.0f,
-                0.0f, 1.0f, 1.0f, 1.0f,
-                0.0f, 1.0f, 1.0f, 1.0f,
-                0.0f, 1.0f, 1.0f, 1.0f,
-
-                1.0f, 1.0f, 0.0f, 1.0f,
-                1.0f, 1.0f, 0.0f, 1.0f,
-                1.0f, 1.0f, 0.0f, 1.0f,
-                1.0f, 1.0f, 0.0f, 1.0f,
             };
 
             uint[] indexArray = new uint[] {
                 0, 1, 2,
                 0, 2, 3,
 
-                4, 5, 6,
-                4, 6, 7,
-
-                8, 9, 10,
-                10, 11, 8,
-
-                12, 14, 13,
-                12, 15, 14,
-
-                17, 16, 19,
-                17, 19, 18,
-
-                20, 22, 21,
-                20, 23, 22
             };
 
             uint vertices = Gl.GenBuffer();
@@ -144,7 +81,72 @@ namespace GrafikaSzeminarium
             Gl.BufferData(GLEnum.ElementArrayBuffer, (ReadOnlySpan<uint>)indexArray.AsSpan(), GLEnum.StaticDraw);
             Gl.BindBuffer(GLEnum.ElementArrayBuffer, 0);
 
-            return new ModelObjectDescriptor() {Vao= vao, Vertices = vertices, Colors = colors, Indices = indices, IndexArrayLength = (uint)indexArray.Length, Gl = Gl};
+            return new ModelObjectDescriptor() { Vao = vao, Vertices = vertices, Colors = colors, Indices = indices, IndexArrayLength = (uint)indexArray.Length, Gl = Gl };
+
+        }
+
+        public unsafe static ModelObjectDescriptor CreateSides2(GL Gl)
+        {
+            uint vao = Gl.GenVertexArray();
+            Gl.BindVertexArray(vao);
+
+            // counter clockwise is front facing
+            float[] vertexArray = new float[] {
+
+                // front face
+                //-0.5f, 0.75f, 0.5f * ((float)Math.Sin(80.0 * Math.PI / 180.0)) / ((float)Math.Sin(10.0 * Math.PI / 180.0)), -(float)Math.Tan(10.0 * Math.PI / 180.0), 0f, 1.0f,
+                //-0.5f, -0.75f, 0.5f * ((float)Math.Sin(80.0 * Math.PI / 180.0)) / ((float)Math.Sin(10.0 * Math.PI / 180.0)), -(float)Math.Tan(10.0 * Math.PI / 180.0), 0f, 1.0f,
+                //0.5f, -0.75f, 0.5f * ((float)Math.Sin(80.0 * Math.PI / 180.0)) / ((float)Math.Sin(10.0 * Math.PI / 180.0)), (float)Math.Tan(10.0 * Math.PI / 180.0), 0f, 1.0f,
+                //0.5f, 0.75f, 0.5f * ((float)Math.Sin(80.0 * Math.PI / 180.0)) / ((float)Math.Sin(10.0 * Math.PI / 180.0)), (float)Math.Tan(10.0 * Math.PI / 180.0), 0f, 1.0f,
+
+                -0.5f, 0.75f, 0.5f / ((float)Math.Tan(10.0 * Math.PI / 180.0)), -(float)Math.Tan(10.0 * Math.PI / 180.0), 0f, 1.0f,
+                -0.5f, -0.75f, 0.5f / ((float)Math.Tan(10.0 * Math.PI / 180.0)), -(float)Math.Tan(10.0 * Math.PI / 180.0), 0f, 1.0f,
+                0.5f, -0.75f, 0.5f / ((float)Math.Tan(10.0 * Math.PI / 180.0)), (float)Math.Tan(10.0 * Math.PI / 180.0), 0f, 1.0f,
+                0.5f, 0.75f, 0.5f / ((float)Math.Tan(10.0 * Math.PI / 180.0)), (float)Math.Tan(10.0 * Math.PI / 180.0), 0f, 1.0f,
+            };
+
+            float[] colorArray = new float[] {
+                1.0f, 0.0f, 0.0f, 1.0f,
+                1.0f, 0.0f, 0.0f, 1.0f,
+                1.0f, 0.0f, 0.0f, 1.0f,
+                1.0f, 0.0f, 0.0f, 1.0f,
+
+            };
+
+            uint[] indexArray = new uint[] {
+                0, 1, 2,
+                0, 2, 3,
+
+            };
+
+            uint vertices = Gl.GenBuffer();
+            Gl.BindBuffer(GLEnum.ArrayBuffer, vertices);
+            Gl.BufferData(GLEnum.ArrayBuffer, (ReadOnlySpan<float>)vertexArray.AsSpan(), GLEnum.StaticDraw);
+            // 0 is position
+            // 2 is normals
+            uint offsetPos = 0;
+            uint offsetNormals = offsetPos + 3 * sizeof(float);
+            uint vertexSize = offsetNormals + 3 * sizeof(float);
+            Gl.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, vertexSize, (void*)offsetPos);
+            Gl.EnableVertexAttribArray(0);
+            Gl.VertexAttribPointer(2, 3, VertexAttribPointerType.Float, true, vertexSize, (void*)offsetNormals);
+            Gl.EnableVertexAttribArray(2);
+            Gl.BindBuffer(GLEnum.ArrayBuffer, 0);
+
+            uint colors = Gl.GenBuffer();
+            Gl.BindBuffer(GLEnum.ArrayBuffer, colors);
+            Gl.BufferData(GLEnum.ArrayBuffer, (ReadOnlySpan<float>)colorArray.AsSpan(), GLEnum.StaticDraw);
+            // 1 is color
+            Gl.VertexAttribPointer(1, 4, VertexAttribPointerType.Float, false, 0, null);
+            Gl.EnableVertexAttribArray(1);
+            Gl.BindBuffer(GLEnum.ArrayBuffer, 0);
+
+            uint indices = Gl.GenBuffer();
+            Gl.BindBuffer(GLEnum.ElementArrayBuffer, indices);
+            Gl.BufferData(GLEnum.ElementArrayBuffer, (ReadOnlySpan<uint>)indexArray.AsSpan(), GLEnum.StaticDraw);
+            Gl.BindBuffer(GLEnum.ElementArrayBuffer, 0);
+
+            return new ModelObjectDescriptor() { Vao = vao, Vertices = vertices, Colors = colors, Indices = indices, IndexArrayLength = (uint)indexArray.Length, Gl = Gl };
 
         }
 

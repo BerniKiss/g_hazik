@@ -1,11 +1,10 @@
-﻿
-using Silk.NET.Maths;
+﻿using Silk.NET.Maths;
 
 namespace Szeminarium
 {
     internal class CameraDescriptor
     {
-        public double DistanceToOrigin { get; private set; } = 1;
+        public double DistanceToOrigin { get; private set; } = 5;
 
         public double AngleToZYPlane { get; private set; } = 0;
 
@@ -13,7 +12,7 @@ namespace Szeminarium
 
         const double DistanceScaleFactor = 1.1;
 
-        const double AngleChangeStepSize = Math.PI / 180 * 5;
+        const double AngleChangeStepSize = System.Math.PI / 180 * 5;
 
         /// <summary>
         /// Gets the position of the camera.
@@ -33,7 +32,7 @@ namespace Szeminarium
         {
             get
             {
-                return Vector3D.Normalize(GetPointFromAngles(DistanceToOrigin, AngleToZYPlane, AngleToZXPlane + Math.PI / 2));
+                return Vector3D.Normalize(GetPointFromAngles(DistanceToOrigin, AngleToZYPlane, AngleToZXPlane + System.Math.PI / 2));
             }
         }
 
@@ -82,9 +81,9 @@ namespace Szeminarium
 
         private static Vector3D<float> GetPointFromAngles(double distanceToOrigin, double angleToMinZYPlane, double angleToMinZXPlane)
         {
-            var x = distanceToOrigin * Math.Cos(angleToMinZXPlane) * Math.Sin(angleToMinZYPlane);
-            var z = distanceToOrigin * Math.Cos(angleToMinZXPlane) * Math.Cos(angleToMinZYPlane);
-            var y = distanceToOrigin * Math.Sin(angleToMinZXPlane);
+            var x = distanceToOrigin * System.Math.Cos(angleToMinZXPlane) * System.Math.Sin(angleToMinZYPlane);
+            var z = distanceToOrigin * System.Math.Cos(angleToMinZXPlane) * System.Math.Cos(angleToMinZYPlane);
+            var y = distanceToOrigin * System.Math.Sin(angleToMinZXPlane);
 
             return new Vector3D<float>((float)x, (float)y, (float)z);
         }

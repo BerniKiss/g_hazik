@@ -1191,24 +1191,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\kolum\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Berni\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Koli\\Munka\\BBTE\\Tantargyak\\Grafika (MLM5060)\\Kodok\\Grafika-MLM5060\\Szemi3\\Elok\\2025\\Hetfo18-ptln\\GrafikaSzeminarium\\GrafikaSzeminarium.csproj",
+      "projectUniqueName": "C:\\Users\\Berni\\source\\repos\\g_hazik\\GrafikaSzeminarium\\GrafikaSzeminarium.csproj",
       "projectName": "GrafikaSzeminarium",
-      "projectPath": "D:\\Koli\\Munka\\BBTE\\Tantargyak\\Grafika (MLM5060)\\Kodok\\Grafika-MLM5060\\Szemi3\\Elok\\2025\\Hetfo18-ptln\\GrafikaSzeminarium\\GrafikaSzeminarium.csproj",
-      "packagesPath": "C:\\Users\\kolum\\.nuget\\packages\\",
-      "outputPath": "D:\\Koli\\Munka\\BBTE\\Tantargyak\\Grafika (MLM5060)\\Kodok\\Grafika-MLM5060\\Szemi3\\Elok\\2025\\Hetfo18-ptln\\GrafikaSzeminarium\\obj\\",
+      "projectPath": "C:\\Users\\Berni\\source\\repos\\g_hazik\\GrafikaSzeminarium\\GrafikaSzeminarium.csproj",
+      "packagesPath": "C:\\Users\\Berni\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Berni\\source\\repos\\g_hazik\\GrafikaSzeminarium\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\kolum\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Berni\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1216,15 +1211,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
-        "C:\\Users\\kolum\\.nuget\\repository": {},
-        "https://api.nuget.org/v3/index.json": {},
-        "https://nexus.kilgray.com/repository/kilgray-nuget-dev-sandbox/": {},
-        "https://nexus.kilgray.com/repository/kilgray-private-nuget-release/": {},
-        "https://nexus.kilgray.com/repository/kilgray-private-nuget-snapshot/": {},
-        "https://nexus.kilgray.com/repository/memoq-nuget-debug/": {},
-        "https://nexus.kilgray.com/repository/memoq-nuget-release/": {},
-        "https://nexus.kilgray.com/repository/memoq-nuget-sandbox/": {}
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
@@ -1240,9 +1227,8 @@
       "restoreAuditProperties": {
         "enableAudit": "true",
         "auditLevel": "low",
-        "auditMode": "all"
-      },
-      "SdkAnalysisLevel": "9.0.100"
+        "auditMode": "direct"
+      }
     },
     "frameworks": {
       "net8.0": {
@@ -1273,30 +1259,8 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1903",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'System.Text.Json' 8.0.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-8g4q-xg66-9fp4",
-      "libraryId": "System.Text.Json",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    },
-    {
-      "code": "NU1903",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'System.Text.Json' 8.0.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-hh2w-p6rv-4g7w",
-      "libraryId": "System.Text.Json",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    }
-  ]
+  }
 }
