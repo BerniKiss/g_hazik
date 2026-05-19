@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Berni\\Source\\Repos\\g_hazik\\Szeminarium1_24_02_17_2\\Szeminarium1_24_02_17_2.csproj": {}
+    "C:\\Users\\Berni\\source\\repos\\g_hazik\\Szeminarium1_24_02_17_2\\Szeminarium1_24_02_17_2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Berni\\Source\\Repos\\g_hazik\\Szeminarium1_24_02_17_2\\Szeminarium1_24_02_17_2.csproj": {
+    "C:\\Users\\Berni\\source\\repos\\g_hazik\\Szeminarium1_24_02_17_2\\Szeminarium1_24_02_17_2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Berni\\Source\\Repos\\g_hazik\\Szeminarium1_24_02_17_2\\Szeminarium1_24_02_17_2.csproj",
+        "projectUniqueName": "C:\\Users\\Berni\\source\\repos\\g_hazik\\Szeminarium1_24_02_17_2\\Szeminarium1_24_02_17_2.csproj",
         "projectName": "Szeminarium1_24_02_17_2",
-        "projectPath": "C:\\Users\\Berni\\Source\\Repos\\g_hazik\\Szeminarium1_24_02_17_2\\Szeminarium1_24_02_17_2.csproj",
+        "projectPath": "C:\\Users\\Berni\\source\\repos\\g_hazik\\Szeminarium1_24_02_17_2\\Szeminarium1_24_02_17_2.csproj",
         "packagesPath": "C:\\Users\\Berni\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Berni\\Source\\Repos\\g_hazik\\Szeminarium1_24_02_17_2\\obj\\",
+        "outputPath": "C:\\Users\\Berni\\source\\repos\\g_hazik\\Szeminarium1_24_02_17_2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Berni\\AppData\\Roaming\\NuGet\\NuGet.Config",

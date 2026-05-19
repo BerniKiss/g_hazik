@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\Berni\\source\\repos\\g_hazik\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3413DB5A-5028-4625-95F5-05B7AB7472F2}|Szeminarium1_24_02_17_2\\Szeminarium1_24_02_17_2.csproj|c:\\users\\berni\\source\\repos\\g_hazik\\szeminarium1_24_02_17_2\\cubearrangementmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3413DB5A-5028-4625-95F5-05B7AB7472F2}|Szeminarium1_24_02_17_2\\Szeminarium1_24_02_17_2.csproj|solutionrelative:szeminarium1_24_02_17_2\\cubearrangementmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{3413DB5A-5028-4625-95F5-05B7AB7472F2}|Szeminarium1_24_02_17_2\\Szeminarium1_24_02_17_2.csproj|c:\\users\\berni\\source\\repos\\g_hazik\\szeminarium1_24_02_17_2\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3413DB5A-5028-4625-95F5-05B7AB7472F2}|Szeminarium1_24_02_17_2\\Szeminarium1_24_02_17_2.csproj|solutionrelative:szeminarium1_24_02_17_2\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3413DB5A-5028-4625-95F5-05B7AB7472F2}|Szeminarium1_24_02_17_2\\Szeminarium1_24_02_17_2.csproj|c:\\users\\berni\\source\\repos\\g_hazik\\szeminarium1_24_02_17_2\\cubearrangementmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3413DB5A-5028-4625-95F5-05B7AB7472F2}|Szeminarium1_24_02_17_2\\Szeminarium1_24_02_17_2.csproj|solutionrelative:szeminarium1_24_02_17_2\\cubearrangementmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3413DB5A-5028-4625-95F5-05B7AB7472F2}|Szeminarium1_24_02_17_2\\Szeminarium1_24_02_17_2.csproj|c:\\users\\berni\\source\\repos\\g_hazik\\szeminarium1_24_02_17_2\\cameradescriptor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -26,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 268,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Bookmark",
@@ -53,10 +53,6 @@
               "Name": "ST:131:0:{13b12e3e-c1b4-4539-9371-4fe9a0d523fc}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "GlCube.cs",
@@ -66,21 +62,19 @@
               "RelativeToolTip": "Szeminarium1_24_02_17_2\\GlCube.cs",
               "ViewState": "AQIAAKkAAAAAAAAAAAAswLQAAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-19T17:42:56.724Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-19T17:42:56.724Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "CubeArrangementModel.cs",
               "DocumentMoniker": "C:\\Users\\Berni\\source\\repos\\g_hazik\\Szeminarium1_24_02_17_2\\CubeArrangementModel.cs",
               "RelativeDocumentMoniker": "Szeminarium1_24_02_17_2\\CubeArrangementModel.cs",
               "ToolTip": "C:\\Users\\Berni\\source\\repos\\g_hazik\\Szeminarium1_24_02_17_2\\CubeArrangementModel.cs",
               "RelativeToolTip": "Szeminarium1_24_02_17_2\\CubeArrangementModel.cs",
-              "ViewState": "AQIAAEAAAAAAAAAAAAAIwFQAAAAJAAAA",
+              "ViewState": "AQIAAEkAAAAAAAAAAAAcwEsAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-19T17:42:48.704Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-19T17:42:48.704Z"
             },
             {
               "$type": "Document",
@@ -90,20 +84,19 @@
               "RelativeDocumentMoniker": "Szeminarium1_24_02_17_2\\CameraDescriptor.cs",
               "ToolTip": "C:\\Users\\Berni\\source\\repos\\g_hazik\\Szeminarium1_24_02_17_2\\CameraDescriptor.cs",
               "RelativeToolTip": "Szeminarium1_24_02_17_2\\CameraDescriptor.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAA6AAAA",
+              "ViewState": "AQIAAFMAAAAAAAAAAAAkwFUAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-19T17:42:42.235Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-19T17:42:42.235Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Berni\\source\\repos\\g_hazik\\Szeminarium1_24_02_17_2\\Program.cs",
               "RelativeDocumentMoniker": "Szeminarium1_24_02_17_2\\Program.cs",
               "ToolTip": "C:\\Users\\Berni\\source\\repos\\g_hazik\\Szeminarium1_24_02_17_2\\Program.cs",
               "RelativeToolTip": "Szeminarium1_24_02_17_2\\Program.cs",
-              "ViewState": "AQIAAMcAAAAAAAAAAAAowNIAAAAsAAAA",
+              "ViewState": "AQIAACwBAAAAAAAAAAAcwDEBAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-19T17:42:16.596Z",
               "EditorCaption": ""

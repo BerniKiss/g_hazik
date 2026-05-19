@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "fKO4muW1LjyGn07aO0ve4cSqoHiHR3OFoylYVW8hKeZJXI02AyQ0IbwouAPbGYcx55RwebDRlwsZ7AQvXpI4lA==",
+  "dgSpecHash": "9ATLisx5RF3AsmzLcEb8QzKODFrhgN9IWTt/nn1idWjwnyzg8VK8jMR6auivM3e8k7Da2I1r+Xuk3Vk3PGlIRQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Berni\\Source\\Repos\\g_hazik\\Szeminarium1_24_02_17_2\\Szeminarium1_24_02_17_2.csproj",
+  "projectFilePath": "C:\\Users\\Berni\\source\\repos\\g_hazik\\Szeminarium1_24_02_17_2\\Szeminarium1_24_02_17_2.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Berni\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\Berni\\.nuget\\packages\\microsoft.dotnet.platformabstractions\\3.1.6\\microsoft.dotnet.platformabstractions.3.1.6.nupkg.sha512",
