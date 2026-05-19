@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GrafikaSzeminarium")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7b5ffade826cd1e0c3396d8d396660c91ddaae59")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ff4cc37aa3584a4c305687d1126c853705ecd7b2")]
 [assembly: System.Reflection.AssemblyProductAttribute("GrafikaSzeminarium")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GrafikaSzeminarium")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

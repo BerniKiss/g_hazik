@@ -41,11 +41,10 @@ namespace GrafikaSzeminarium
             };
 
             float[] colorArray = new float[] {
-                1.0f, 0.0f, 0.0f, 1.0f,
-                1.0f, 0.0f, 0.0f, 1.0f,
-                1.0f, 0.0f, 0.0f, 1.0f,
-                1.0f, 0.0f, 0.0f, 1.0f,
-
+                1.0f, 0.4f, 0.7f, 1.0f,
+                1.0f, 0.4f, 0.7f, 1.0f,
+                1.0f, 0.4f, 0.7f, 1.0f,
+                1.0f, 0.4f, 0.7f, 1.0f,
             };
 
             uint[] indexArray = new uint[] {
@@ -106,11 +105,10 @@ namespace GrafikaSzeminarium
             };
 
             float[] colorArray = new float[] {
-                1.0f, 0.0f, 0.0f, 1.0f,
-                1.0f, 0.0f, 0.0f, 1.0f,
-                1.0f, 0.0f, 0.0f, 1.0f,
-                1.0f, 0.0f, 0.0f, 1.0f,
-
+                1.0f, 0.4f, 0.7f, 1.0f,
+                1.0f, 0.4f, 0.7f, 1.0f,
+                1.0f, 0.4f, 0.7f, 1.0f,
+                1.0f, 0.4f, 0.7f, 1.0f,
             };
 
             uint[] indexArray = new uint[] {
