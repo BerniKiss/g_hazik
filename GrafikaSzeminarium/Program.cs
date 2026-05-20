@@ -12,7 +12,6 @@ namespace GrafikaSzeminarium
     internal class Program
     {
         private static IWindow graphicWindow;
-        // itt egy komment
         private static GL Gl;
 
         private static ImGuiController imGuiController;
