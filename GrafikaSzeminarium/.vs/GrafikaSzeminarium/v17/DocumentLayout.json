@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\Berni\\source\\repos\\g_hazik\\GrafikaSzeminarium\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{0C4A3462-5159-4CE7-AED3-CD6B7C1F8DF3}|GrafikaSzeminarium.csproj|c:\\users\\berni\\source\\repos\\g_hazik\\grafikaszeminarium\\cubearrangementmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C4A3462-5159-4CE7-AED3-CD6B7C1F8DF3}|GrafikaSzeminarium.csproj|solutionrelative:cubearrangementmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{0C4A3462-5159-4CE7-AED3-CD6B7C1F8DF3}|GrafikaSzeminarium.csproj|c:\\users\\berni\\source\\repos\\g_hazik\\grafikaszeminarium\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0C4A3462-5159-4CE7-AED3-CD6B7C1F8DF3}|GrafikaSzeminarium.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -21,10 +25,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{0C4A3462-5159-4CE7-AED3-CD6B7C1F8DF3}|GrafikaSzeminarium.csproj|c:\\users\\berni\\source\\repos\\g_hazik\\grafikaszeminarium\\shaders\\fragmentshader.frag||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{0C4A3462-5159-4CE7-AED3-CD6B7C1F8DF3}|GrafikaSzeminarium.csproj|solutionrelative:shaders\\fragmentshader.frag||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0C4A3462-5159-4CE7-AED3-CD6B7C1F8DF3}|GrafikaSzeminarium.csproj|c:\\users\\berni\\source\\repos\\g_hazik\\grafikaszeminarium\\cubearrangementmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0C4A3462-5159-4CE7-AED3-CD6B7C1F8DF3}|GrafikaSzeminarium.csproj|solutionrelative:cubearrangementmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 207,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 11,
           "Children": [
             {
               "$type": "Bookmark",
@@ -74,7 +74,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "VertexShader.vert",
               "DocumentMoniker": "C:\\Users\\Berni\\source\\repos\\g_hazik\\GrafikaSzeminarium\\Shaders\\VertexShader.vert",
               "RelativeDocumentMoniker": "Shaders\\VertexShader.vert",
@@ -87,33 +87,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Berni\\source\\repos\\g_hazik\\GrafikaSzeminarium\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Users\\Berni\\source\\repos\\g_hazik\\GrafikaSzeminarium\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAALYAAAAAAAAAAAAowEMAAAAaAAAA",
+              "ViewState": "AQIAAMgAAAAAAAAAAAAowEMAAAAaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-24T16:25:28.976Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
               "Title": "CubeArrangementModel.cs",
               "DocumentMoniker": "C:\\Users\\Berni\\source\\repos\\g_hazik\\GrafikaSzeminarium\\CubeArrangementModel.cs",
               "RelativeDocumentMoniker": "CubeArrangementModel.cs",
               "ToolTip": "C:\\Users\\Berni\\source\\repos\\g_hazik\\GrafikaSzeminarium\\CubeArrangementModel.cs",
               "RelativeToolTip": "CubeArrangementModel.cs",
-              "ViewState": "AQIAACEAAAAAAAAAAAAcwDYAAAAAAAAA",
+              "ViewState": "AQIAACEAAAAAAAAAAAAcwCcAAAAXAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-10T17:22:17.697Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "CameraDescriptor.cs",
               "DocumentMoniker": "C:\\Users\\Berni\\source\\repos\\g_hazik\\GrafikaSzeminarium\\CameraDescriptor.cs",
               "RelativeDocumentMoniker": "CameraDescriptor.cs",
@@ -126,7 +126,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "ModelObjectDescriptor.cs",
               "DocumentMoniker": "C:\\Users\\Berni\\source\\repos\\g_hazik\\GrafikaSzeminarium\\ModelObjectDescriptor.cs",
               "RelativeDocumentMoniker": "ModelObjectDescriptor.cs",
@@ -139,7 +139,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "FragmentShader.frag",
               "DocumentMoniker": "C:\\Users\\Berni\\source\\repos\\g_hazik\\GrafikaSzeminarium\\Shaders\\FragmentShader.frag",
               "RelativeDocumentMoniker": "Shaders\\FragmentShader.frag",
