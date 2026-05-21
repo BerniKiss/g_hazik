@@ -47,7 +47,11 @@
           "dependencies": {
             "Silk.NET": {
               "target": "Package",
-              "version": "[2.20.0, )"
+              "version": "[2.23.0, )"
+            },
+            "Silk.NET.OpenGL.Extensions.ImGui": {
+              "target": "Package",
+              "version": "[2.23.0, )"
             }
           },
           "imports": [
